@@ -8,8 +8,7 @@ var App;
             this.password = "";
             this.Empresas = false;
             var _this = this;
-            _this.EmpresaSelecionada = { CEMP: "" };
-            
+            _this.EmpresaSelecionada = { CEMP: "" };            
             
             this.loginOK = function () {
                 localStorage.setItem("userCEMP", _this.EmpresaSelecionada.CEMP);
@@ -32,7 +31,7 @@ var App;
                         }
                         else {
                             security.empresas($rootScope.currentUser.id).then(function (dados) {
-                                var emp = dados;
+                                var emp = dados.result[0];
 
                                 if (emp.length == null || emp.length == 0) {
                                     toaster.warning("Atenção", "Usuário sem empresa de acesso!");

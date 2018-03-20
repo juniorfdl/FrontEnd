@@ -1,4 +1,3 @@
-/// <reference path="../base.ts" />
 var App;
 (function (App) {
     var Services;
@@ -65,7 +64,7 @@ var App;
                 this.intercept = intercept;
                 this.toaster = toaster;
 
-                var posicao = this.api.toLowerCase().indexOf("/api") + 4;
+                var posicao = this.api.toLowerCase().indexOf("/datasnap/rest") + 14;
                 this.apibase = this.api.substr(0, posicao);
             }
             ApiService.prototype.fetch = function (url, params) {

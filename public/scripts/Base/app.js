@@ -9,7 +9,7 @@ var App;
     });
 
     App.modules.App.config(function (apiProvider, luarApp) {
-        apiProvider.setBaseUrl(luarApp.WEBAPI + '/api');
+        apiProvider.setBaseUrl(luarApp.WEBAPI);
     });
 
     App.modules.App.config(["$locationProvider", function ($locationProvider) {
@@ -27,8 +27,8 @@ var App;
 
     App.modules.App.config(function (unsavedWarningsConfigProvider) {
         unsavedWarningsConfigProvider.routeEvent = '$stateChangeStart';
-        unsavedWarningsConfigProvider.navigateMessage = "As alterações não salvas serão perdidas.";
-        unsavedWarningsConfigProvider.reloadMessage = "As alterações não salvas serão perdidas.";
+        unsavedWarningsConfigProvider.navigateMessage = "As alteraï¿½ï¿½es nï¿½o salvas serï¿½o perdidas.";
+        unsavedWarningsConfigProvider.reloadMessage = "As alteraï¿½ï¿½es nï¿½o salvas serï¿½o perdidas.";
     });
 
     App.modules.App.run(function ($locale) {
@@ -49,16 +49,17 @@ var App;
                 $rootScope.EmpresaSelecionadaLogo = logo;
             }
 
-            if (loginusr == null || loginpass == null) {
-                $location.path('/login');
-            }
-            else {
-                security.login(loginusr, loginpass).then(function () {
-                    $rootScope.currentUser.userEmpresa = localStorage.getItem("userEmpresa");
-                    $rootScope.currentUser.userCEMP = localStorage.getItem("userCEMP");
-                    $rootScope.currentUser.CODIGOSISUSUARIO = localStorage.getItem("CODIGOSISUSUARIO");
-                });
-            }
+            $location.path('/login');
+            // if (loginusr == null || loginpass == null) {
+            //     $location.path('/login');
+            // }
+            // else {
+            //     security.login(loginusr, loginpass).then(function () {
+            //         $rootScope.currentUser.userEmpresa = localStorage.getItem("userEmpresa");
+            //         $rootScope.currentUser.userCEMP = localStorage.getItem("userCEMP");
+            //         $rootScope.currentUser.CODIGOSISUSUARIO = localStorage.getItem("CODIGOSISUSUARIO");
+            //     });
+            // }
         }
 
         // var pathlogin = $location.path();

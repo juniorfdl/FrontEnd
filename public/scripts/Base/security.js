@@ -13,10 +13,12 @@ var App;
                     cachedCredentials.userName = userName;
                     cachedCredentials.password = password;
                     
-                    var request = api("sis_usuario").query("localizar", { NOME: userName, PWD: password });
+                    var request = api("datasnap/rest").allLook(null, 'tormbr/login/'+userName+'/'+password);
+                    //var request = api("tormbr").(userName,password);
 
                     return request.then(function (response) {
                         try {
+                            response = response.result[0];
                             localStorage.setItem("luarusr", userName);
                             localStorage.setItem("luarpass", password);
                             localStorage.setItem("ADMIN", response.ADMIN);
@@ -83,7 +85,8 @@ var App;
                 },
 
                 empresas: function (id) {
-                    var request = api("sis_usuario").query("Empresa", { id: id });
+                    //var request = api("sis_usuario").query("Empresa", { id: id });
+                    var request = api("datasnap/rest").allLook(null, 'tormbr/Empresa/'+id);
                     return request;
                 },
 
