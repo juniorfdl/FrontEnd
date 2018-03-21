@@ -25,8 +25,8 @@ var App;
 
               this.PedidoMesa = function (mesa) {
                   debugger;
-                  var params = { "id": mesa };
-                  return this.api.allLook(params,'sis_usuario/PedidoMesa');
+                  //var params = { "id": mesa };
+                  return this.api.allLook(null,'tormbr/PedidoMesa/'+mesa);
               };
 
             }
@@ -35,7 +35,7 @@ var App;
             Object.defineProperty(CrudpedidoService.prototype, "baseEntity", {
                 /// @override
                 get: function () {
-                    return 'pedidoes';
+                    return 'tormbr/ConfirmarPedido';
                 },
                 enumerable: true,
                 configurable: true

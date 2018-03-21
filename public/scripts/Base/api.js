@@ -171,8 +171,8 @@ var App;
              */
             ApiService.prototype.save = function (entity) {
                 var _this = this;
-                var url = this.api + (entity.id ? '/' + entity.id : '');
-                var method = entity.id ? 'PUT' : 'POST';
+                var url = this.api;// + (entity.id ? '/' + entity.id : '');
+                var method = 'POST';//entity.id ? 'PUT' : 'POST';
 
                 if (entity.id == null) {
                     entity.id = 0;
@@ -184,6 +184,12 @@ var App;
                     data: entity
                 }).then(function (response) {
                     var payload = (response.data || {});
+					
+					if (response.data.result)
+					{
+					  payload = response.data.result[0];	
+					}
+					
                     payload.$status = response.status;
 
                     if (response.status != 201 && response.data.mensagem_erro != null) {

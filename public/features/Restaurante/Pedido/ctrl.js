@@ -68,12 +68,13 @@ var App;
                         if (isConfirm) {
                             _this.crudSvc.PedidoMesa(index).then(function (dados) {
                                 
-                                if (dados) {                           
+                                if (dados.result) {  
+                                     dados = dados.result[0];
                                     _this.Pedido.id = dados.id;
                                     _this.Pedido.CodUsr = dados.CodUsr;
                                     _this.Pedido.Total = dados.Total;
-                                    _this.Pedido.OBS = dados.OBS;
                                     _this.VerResumo = true;
+                                    _this.Pedido.OBS = dados.OBS;
                                                                                                             
                                     for (var i = 0; i < dados.Produtos.length; i++)
                                     {
@@ -84,8 +85,8 @@ var App;
 
                                                 for (var iP = 0; iP < _this.Produtos.length; iP++)
                                                 {
-                                                    if (_this.Produtos[iP].id == dados.Produtos[i].PRODICOD) {
-                                                        _this.Produtos[iP].QTD = dados.Produtos[i].PVITN3QTD - 1;
+                                                    if (_this.Produtos[iP].id == dados.Produtos[i].id) {
+                                                        _this.Produtos[iP].QTD = dados.Produtos[i].QTD - 1;
                                                         _this.AddProduto(_this.Produtos[iP]);
                                                         break;
                                                     }
@@ -177,7 +178,7 @@ var App;
             }
 
             CrudpedidoCtrl.prototype.crud = function () {
-                return "pedidoes";
+                return "tormbr/ConfirmarPedido";
             };
 
             return CrudpedidoCtrl;
