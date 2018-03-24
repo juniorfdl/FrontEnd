@@ -24,7 +24,7 @@ var App;
                     this.Pedido.Produtos = [];
                     this.Pedido.Mesa = 0;
                     this.Pedido.Total = 0;
-                    this.Pedido.CodUsr = $rootScope.currentUser.CODIGOSISUSUARIO;
+                    this.Pedido.CodUsr = $rootScope.currentUser.id;
                     this.Pedido.OBS = "";
                 }
 
@@ -39,6 +39,7 @@ var App;
                 this.VisualizarGrupo = false;
                 
                 this.ConfirmarPedido = function () {
+					_this.Pedido.CodUsr = $rootScope.currentUser.id;
                     _this.crudSvc.ConfirmarPedido(_this.Pedido).then(function (dados) {
                         debugger;
                         _this.Pedido.id = dados.id;
